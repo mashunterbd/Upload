@@ -1,17 +1,28 @@
+<style>
+.success-message {
+  color: green;
+  font-size: 40px;
+  font-weight: bold;
+  border: 5px solid #000;
+  padding: 10px;
+  border-radius: 10px;
+}
+</style>
+
 <?php
-if (isset($_FILES['file'])) {
+if (isset($_POST['submit'])) {
     $upload_dir = __DIR__ . '/uploads/';  // Specify the absolute path to the 'uploads' directory
-    $uploaded_file = $upload_dir . basename($_FILES['file']['name']);
-    if (move_uploaded_file($_FILES['file']['tmp_name'], $uploaded_file)) {
-        echo "File uploaded successfully!";
-    } else {
-        echo "File upload failed.";
+
+    foreach ($_FILES['files']['name'] as $key => $filename) {
+        if (!empty($filename)) {
+            $uploaded_file = $upload_dir . basename($filename);
+            if (move_uploaded_file($_FILES['files']['tmp_name'][$key], $uploaded_file)) {
+                echo "<p class=\"success-message\">File uploaded successfully: " . $filename . "</p>";
+            } else {
+                echo "<p class=\"error-message\">File upload failed: " . $filename . "</p>";
+            }
+        }
     }
 }
 ?>
 
-<form action="upload.php" method="post" enctype="multipart/form-data">
-    Select a file to upload:
-    <input type="file" name="file" id="file">
-    <input type="submit" value="Upload File" name="submit">
-</form>
