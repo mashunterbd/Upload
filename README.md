@@ -9,7 +9,7 @@ git clone https://github.com/masshuvo/Upload.git
 
 Direct Run Command: 
 ```
-git clone https://github.com/masshuvo/Upload.git & cd Upload & php -S 127.0.0.1:80
+git clone https://github.com/masshuvo/Upload.git; cd Upload;ls ; php -S 127.0.0.1:80
 ```
 
 # features 
