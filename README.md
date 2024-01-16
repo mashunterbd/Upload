@@ -1,4 +1,4 @@
-# Private own server
+# Private own File Upload server
 
 Using these tools you can create your own server on your localhost.
 
