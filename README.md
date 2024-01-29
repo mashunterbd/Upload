@@ -40,6 +40,8 @@ php -S 0.0.0.0:80
 ```
 <b>This command will make the PHP server accessible on all interfaces, including the one used by your Android phone's hotspot. </b> </br>
 
+![Screenshot_2024-01-29-17-09-19-403_com android chrome](https://github.com/masshuvo/Upload/assets/108648096/fe143f2e-de11-46f9-aaa7-2d646b7b30aa)
+
 Find your Android phone's IP address: Go to your Android phone's settings, then find the network settings section, and look for the IP address of your phone. It usually starts with "192.168.x.x" or "10.x.x.x".
 </br>
 Access the server from the client device: On the device connected to your Android hotspot, open a web browser and enter the IP address of your Android phone followed by :80 (the port you specified in the PHP server command). For example, if your Android phone's IP address is 192.168.0.100, you would enter http://192.168.0.100:80 in the browser address bar.
