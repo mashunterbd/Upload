@@ -27,9 +27,10 @@ git clone https://github.com/masshuvo/Upload.git; cd Upload;ls ; php -S 127.0.0.
 
 ### আপনার হটস্পট এর সাথে কানেক্টেড ব্যবহারকারীরাও যদি এই সার্ভার টির অ্যাক্সেস নিতে চায় সে ক্ষেত্রে আলাদা পদ্ধতি রয়েছে।  
 </br>
-### If users connected to your hotspot also want to access this server, there is a different procedure.  If users connected to your hotspot also want to access this server, there is a different procedure.  
 
-<p> Configure PHP server to listen on all interfaces: By default, when you run php -S 127.0.0.1:80, the PHP server only listens on the loopback interface (localhost). You need to modify the command to make it listen on all available network interfaces. Use 0.0.0.0 instead of 127.0.0.1: </p>
+### If users connected to your hotspot also want to access this server, there is a different procedure.  If users connected to your hotspot also want to access this server, there is a different procedure.  
+</br>
+<p> Configure PHP server to listen on all interfaces: By default, when you run php -S 127.0.0.1:80, the PHP server only listens on the loopback interface (localhost). You need to modify the command to make it listen on all available network interfaces. Use <b> 0.0.0.0 </b> instead of 127.0.0.1: </p>
 
 </br>
 Go to file directory: cd <dir>
@@ -37,7 +38,7 @@ Go to file directory: cd <dir>
 ```
 php -S 0.0.0.0:80
 ```
-This command will make the PHP server accessible on all interfaces, including the one used by your Android phone's hotspot. </br>
+<b>This command will make the PHP server accessible on all interfaces, including the one used by your Android phone's hotspot. </b> </br>
 
 Find your Android phone's IP address: Go to your Android phone's settings, then find the network settings section, and look for the IP address of your phone. It usually starts with "192.168.x.x" or "10.x.x.x".
 </br>
