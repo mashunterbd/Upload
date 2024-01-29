@@ -6,6 +6,15 @@ Clone Command:
 ```
 git clone https://github.com/masshuvo/Upload.git
 ```
+# must Be PHP installed (Linux)
+
+```
+apt-get install php-y
+```
+# Termux
+```
+pkg install php-y
+```
 
 Direct Run Command: 
 ```
