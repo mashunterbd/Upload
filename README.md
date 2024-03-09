@@ -64,3 +64,53 @@ go to Upload directory and execute this command:
 ```
 chmod +x *
 ```
+# Problem
+``` 
+┌──(root㉿kali)-[/project]
+└─# php -S 127.0.0.1:80
+[Sat Mar  9 06:25:29 2024] PHP 8.2.12 Development Server (http://127.0.0.1:80) started
+[Sat Mar  9 06:25:31 2024] 127.0.0.1:45006 Accepted
+[Sat Mar  9 06:25:31 2024] 127.0.0.1:45006 [200]: GET /
+[Sat Mar  9 06:25:31 2024] 127.0.0.1:45006 Closing
+[Sat Mar  9 06:25:31 2024] 127.0.0.1:45010 Accepted
+[Sat Mar  9 06:25:31 2024] 127.0.0.1:45010 [200]: GET /
+[Sat Mar  9 06:25:31 2024] 127.0.0.1:45010 Closing
+[Sat Mar  9 06:25:31 2024] 127.0.0.1:45022 Accepted
+[Sat Mar  9 06:25:31 2024] 127.0.0.1:45022 [200]: GET /
+[Sat Mar  9 06:25:31 2024] 127.0.0.1:45022 Closing
+[Sat Mar  9 06:25:46 2024] 127.0.0.1:41108 Accepted
+[Sat Mar  9 06:25:47 2024] PHP Warning:  POST Content-Length of 15344242 bytes exceeds the limit of 8388608 bytes in Unknown on line 0
+[Sat Mar  9 06:25:47 2024] 127.0.0.1:41108 [200]: POST /upload.php
+[Sat Mar  9 06:25:47 2024] 127.0.0.1:41108 Closing
+[Sat Mar  9 06:25:53 2024] 127.0.0.1:39264 Accepted
+[Sat Mar  9 06:25:53 2024] PHP Warning:  POST Content-Length of 15344242 bytes exceeds the limit of 8388608 bytes in Unknown on line 0
+[Sat Mar  9 06:25:53 2024] 127.0.0.1:39264 [200]: POST /upload.php
+[Sat Mar  9 06:25:53 2024] 127.0.0.1:39264 Closing
+[Sat Mar  9 06:25:54 2024] 127.0.0.1:39278 Accepted
+[Sat Mar  9 06:25:54 2024] PHP Warning:  POST Content-Length of 15344242 bytes exceeds the limit of 8388608 bytes in Unknown on line 0
+[Sat Mar  9 06:25:54 2024] 127.0.0.1:39278 [200]: POST /upload.php
+[Sat Mar  9 06:25:54 2024] 127.0.0.1:39278 Closing
+```
+The warning message you're seeing indicates that the size of the POST request content (the uploaded file) exceeds the PHP upload limit set in your server configuration.
+
+To fix this issue, you need to increase the PHP upload limit. Here's how you can do it:
+
+Locate your PHP configuration file. It's commonly named php.ini and can be found in different locations depending on your server setup. Common paths include /etc/php.ini, /etc/php/7.x/php.ini, or /etc/php/7.x/apache2/php.ini.
+
+Open the php.ini file in a text editor.
+
+Search for the following directives and increase their values as needed:
+
+upload_max_filesize: This directive sets the maximum size of uploaded files.
+post_max_size: This directive sets the maximum size of POST data that PHP will accept.
+For example, you can set them to values like:
+
+```
+upload_max_filesize = 100M
+post_max_size = 100M
+
+```
+
+Here, 100M indicates 100 megabytes. Adjust the values according to your requirements.
+
+Save the changes to the php.ini file.
