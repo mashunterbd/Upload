@@ -34,6 +34,112 @@ git clone https://github.com/masshuvo/Upload.git; cd Upload;ls ; php -S 127.0.0.
 ![Screenshot_2024-01-16-18-05-56-061_com android chrome](https://github.com/masshuvo/Upload/assets/108648096/584a2c82-064f-42f9-992f-5506fd8f3730) </br>
 ![Screenshot_2024-01-16-18-06-14-595_com offsec nhterm](https://github.com/masshuvo/Upload/assets/108648096/562d3998-b5ec-4de6-aceb-625092432fc8)
 
+# Apache2 Configuration 
+Create a file on 
+this diroctry <b><var//www/html/b> info.php
+```
+<?php
+phpinfo();
+?>
+```
+then open its on your browser. then you can see which PHP configuration file using for handling file uploading. in my case : 
+![image](https://github.com/mashunterbd/Upload/assets/108648096/717a2a39-3f60-4d79-82e9-6090ef929920)
+
+/etc/php/8.2/apache2/php.ini
+
+# Step 1: Update Apache Configuration
+Edit apache2.conf or httpd.conf:
+
+Open your Apache configuration file (usually located at /etc/apache2/apache2.conf or /etc/httpd/conf/httpd.conf depending on your distribution):
+bash
+Copy code
+sudo nano /etc/apache2/apache2.conf
+# or
+sudo nano /etc/httpd/conf/httpd.conf
+Set LimitRequestBody:
+
+Add or update the LimitRequestBody directive to allow large file uploads. For example, to set a limit of 20GB:
+apache
+Copy code
+<Directory "/var/www/html">
+    LimitRequestBody 21474836480
+</Directory>
+Step 2: Update PHP Configuration (if using PHP)
+If your server uses PHP to handle file uploads, you'll need to update the PHP configuration as well.
+
+Edit php.ini:
+
+Open the PHP configuration file (usually located at /etc/php/7.4/apache2/php.ini, /etc/php.ini, or similar):
+bash
+
+sudo nano /etc/php/7.4/apache2/php.ini
+# or
+sudo nano /etc/php.ini
+Increase upload_max_filesize and post_max_size:
+
+Set the following directives to values that can handle the large files (e.g., 20GB):
+ini
+
+upload_max_filesize = 20G
+post_max_size = 20G
+Increase max_execution_time and max_input_time:
+
+Adjust these settings to ensure that the script execution does not time out during large file uploads:
+ini
+
+max_execution_time = 3600
+max_input_time = 3600
+
+After making these changes, restart the Apache and PHP services to apply the new settings.
+
+Restart Apache:
+
+bash
+Copy code
+sudo systemctl restart apache2
+# or
+sudo systemctl restart httpd
+
+## I faced some problem and I am giving the solution below: 
+However, the error.log file must be checked in order to resolve such issues :
+Apache error log you provided, the main issue seems to be permission-related. Here are the relevant log entries indicating the problem:
+
+Permission denied errors for accessing files:
+
+less
+Copy code
+[Mon Jun 03 02:26:44.112870 2024] [core:error] [pid 25763] (13)Permission denied: [client 192.168.0.113:8319] AH00132: file permissions deny server access: /var/www/html/index.html
+Permission denied errors when trying to move uploaded files:
+
+less
+Copy code
+[Mon Jun 03 02:27:56.340934 2024] [php:warn] [pid 25763] [client 192.168.0.113:8334] PHP Warning:  move_uploaded_file(/var/www/html/uploads/The Beekeeper Full Movie Watch Online 123Movies.ts): Failed to open stream: Permission denied in /var/www/html/upload.php on line 17, referer: http://192.168.0.162/
+[Mon Jun 03 02:27:56.341316 2024] [php:warn] [pid 25763] [client 192.168.0.113:8334] PHP Warning:  move_uploaded_file(): Unable to move "/tmp/phpthzi3G" to "/var/www/html/uploads/The Beekeeper Full Movie Watch Online 123Movies.ts" in /var/www/html/upload.php on line 17, referer: http://192.168.0.162/
+These errors indicate that the Apache user does not have the necessary permissions to write to the /var/www/html/uploads directory. To resolve this issue, you need to adjust the permissions and ownership of this directory.
+
+Steps to Fix Permissions
+Change Ownership of the Directory:
+Ensure that the directory where files are being uploaded is owned by the Apache user (typically www-data on Debian-based systems):
+
+bash
+Copy code
+sudo chown -R www-data:www-data /var/www/html/uploads
+Set Appropriate Permissions:
+Set the correct permissions for the directory to allow Apache to write files:
+
+bash
+Copy code
+sudo chmod -R 755 /var/www/html/uploads
+Restart Apache:
+After making these changes, restart the Apache server to apply the new permissions:
+
+bash
+Copy code
+sudo systemctl restart apache2
+
+#  I have my config file in the repository if you want you can compare it to see if everything is correct
+
+
 ### আপনার হটস্পট এর সাথে কানেক্টেড ব্যবহারকারীরাও যদি এই সার্ভার টির অ্যাক্সেস নিতে চায় সে ক্ষেত্রে আলাদা পদ্ধতি রয়েছে।  
 </br>
 
