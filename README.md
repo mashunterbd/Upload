@@ -3,6 +3,8 @@
 ![Made by](https://img.shields.io/badge/Made%20by-html-%2300ff00?style=flat-square&logo=html&logoColor=white&labelColor=%230000ff)
 
 ![Use in Terminal (CLI)](https://img.shields.io/badge/Use%20in%20Terminal%20(CLI)-blueviolet?style=flat&labelColor=purple&color=blueviolet)
+
+![Support Big File](https://img.shields.io/badge/Support%20Big%20File-pink?style=flat-square)
 # Private own File Upload server
 
 Using these tools you can create your own server on your localhost.
@@ -12,11 +14,13 @@ Clone Command:
 git clone https://github.com/masshuvo/Upload.git
 ```
 # Must Be PHP installed (Linux)
+![Install ](https://img.shields.io/badge/Install%20-php-%23ffff00?style=flat-square&logo=php&logoColor=white&labelColor=%23000000)
 
 ```
 apt-get install php-y
 ```
 # Termux
+![Termux ](https://img.shields.io/badge/Termux--%23000000?style=plastic&labelColor=%23000000)
 ```
 pkg install php -y
 ```
@@ -27,6 +31,7 @@ git clone https://github.com/masshuvo/Upload.git; cd Upload;ls ; php -S 127.0.0.
 ```
 
 # features 
+![🏷️ Features ](https://img.shields.io/badge/%F0%9F%8F%B7%EF%B8%8F%20Features%20-blue?style=for-the-badge) </br> 
 [+] Port Forwarding can be done through any service. </br>
 [+] Good Upload UI </br>
 [+] Upload success Messages </br>
