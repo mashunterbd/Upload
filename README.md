@@ -1,8 +1,9 @@
-![Upload Server](https://img.shields.io/badge/Upload-Server-yellow?style=plastic&labelColor=blueviolet&color=yellow)
+![Upload Server](https://img.shields.io/badge/Upload-Server-yellow?style=plastic&labelColor=blueviolet&color=yellow) ![Made by](https://img.shields.io/badge/Made%20by-html-%2300ff00?style=flat-square&logo=html&logoColor=white&labelColor=%230000ff) ![Use in Terminal (CLI)](https://img.shields.io/badge/Use%20in%20Terminal%20(CLI)-blueviolet?style=flat&labelColor=purple&color=blueviolet) ![Support Big File](https://img.shields.io/badge/Support%20Big%20File-pink?style=flat-square)
 
-![Made by](https://img.shields.io/badge/Made%20by-html-%2300ff00?style=flat-square&logo=html&logoColor=white&labelColor=%230000ff)
 
-![Use in Terminal (CLI)](https://img.shields.io/badge/Use%20in%20Terminal%20(CLI)-blueviolet?style=flat&labelColor=purple&color=blueviolet)
+
+
+
 
 ![Support Big File](https://img.shields.io/badge/Support%20Big%20File-pink?style=flat-square)
 # Private own File Upload server
